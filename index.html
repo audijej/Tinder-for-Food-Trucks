@@ -37,14 +37,17 @@
         // locate you.
         var map, infoWindow;
         function initMap() {
-            var uluru = {lat: -25.344, lng: 131.036};
+            var uluru = {lat: 47.608, lng: -122.335};
             var map = new google.maps.Map(
             document.getElementById('map'), {zoom: 15, center: uluru});
             // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({position: uluru, map: map});
+
+            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var marker = new google.maps.Marker({position: uluru, map: map, icon: iconBase});
             map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
+            center: {lat: 47.608, lng: -122.335},
             zoom: 15
+
           });
           infoWindow = new google.maps.InfoWindow;
   
@@ -57,7 +60,7 @@
               };
   
               infoWindow.setPosition(pos);
-              infoWindow.setContent('Location found.');
+              infoWindow.setContent();
               infoWindow.open(map);
               map.setCenter(pos);
             }, function() {
