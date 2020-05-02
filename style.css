@@ -8,6 +8,37 @@
 
 }
 
+.jumbotron { 
+  padding: 30px;
+  background-color: #111;
+}
+
+.jumbotron h1 { 
+    text-align: center; 
+    color: #DDD;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+.label-icon {
+    background-color: white;
+    color: red;
+    text-align: center;
+}
+
+.input-field {
+    background-color: white;
+    text-align: center;
+    border: solid black 3px;
+
+}
+
+.container {
+    background-color: grey;
+    text-align: center;
+}
+
 .body-container {
 margin-top: 20%;
 text-align: center;
