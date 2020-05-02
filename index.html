@@ -83,6 +83,22 @@
                                 'Error: Your browser doesn\'t support geolocation.');
           infoWindow.open(map);
         }
+
+        marker.addListener('click', function() {
+          console.log("I'm a Google click");
+          getYelpReview();
+        });
+
+        function getYelpReview() {
+          let yelpURL = "https://api.yelp.com/v3/businesses/search"
+          $.ajax({
+            url: yelpURL,
+            method: GET
+          }).then(function(responseYelp){
+            console.log(responseYelp);
+          })
+        }
+
       </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0&callback=initMap"
     async defer></script>

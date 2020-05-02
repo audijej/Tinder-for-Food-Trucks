@@ -1,23 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <nav>
-        <div class="nav-wrapper">
-          <form>
-            <div class="input-field">
-              <input id="search" type="search" required>
-              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
-          </form>
-        </div>
-      </nav>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <title>Tinder for Food Trucks</title>
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <div>
+            <h1>Show where your food truck is located</h1>
+        </div>
+    </div>
+
+    <!-- <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Food Truck Tinder</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="foodtruck.html">Food Truck Vendors</a></li>
+                <li><a href="badges.html">Food Truck Enthusiast</a></li>
+            </ul>
+        </div>
+    </nav> -->
+
+    <div class="container">
+
+        <div class="nav-wrapper2">
+            <h1>Check in here</h1>
+            <form>
+                <div class="input-field">
+                    <form id="checkInLocation">
+                        <input id="searchTruckName" placeholder="FoodTruck Name" type="search" required>
+                        <label class="label-icon" for="search"></label>
+                    
+                        <input id="emailName" placeholder="Email" type="search" required>
+                        
+                        <button id="checkInButton">Check-in</button>
+                        <button id="checkOutButton">Check-out</button>
+                    
+                        <!-- <i class="material-icons">close</i> -->
+                    </form>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+
+        function writeUserData(inputTruckName, inputEmail) {
+            let userID = "123"
+            firebase.database().ref('users/' + userID).set({
+                truckName: inputTruckName,
+                email: inputEmail
+                //lat: position.coords.latitude,
+                //long: position.coords.longitude
+            });
+        }
+
+      let button = document.querySelector("checkInLocation");
+
+      $("#checkInButton").on("click", function() {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    console.log("hello");
+    //let userInputid = $("#emailn")
+    writeUserData("name","email" )
+  });
+
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCPnQV0bMCM7T5Or9Z9j90rBE4u7a0QOGI",
+            authDomain: "tinder-for-food-trucks.firebaseapp.com",
+            databaseURL: "https://tinder-for-food-trucks.firebaseio.com",
+            projectId: "tinder-for-food-trucks",
+            storageBucket: "tinder-for-food-trucks.appspot.com",
+            messagingSenderId: "602255825688",
+            appId: "1:602255825688:web:02f921fa837b05930a5c6d",
+            measurementId: "G-00BM15M1DV"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 </body>
+
 </html>
