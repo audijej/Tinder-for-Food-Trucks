@@ -14,25 +14,12 @@
 <body>
 
     <div class="jumbotron">
-        
-            <div id="jumbotronDiv">
-                
+        <div id="jumbotronDiv">
             <h1 id="jumbotronHeading">Show where your food truck is located</h1>
-        
         </div>
-
     </div>
-
-    <!-- <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Food Truck Tinder</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="foodtruck.html">Food Truck Vendors</a></li>
-                <li><a href="badges.html">Food Truck Enthusiast</a></li>
-            </ul>
-        </div>
-    </nav> -->
-
+    <br>
+    <br>
     <div class="container">
 
         <div class="nav-wrapper2">
@@ -41,20 +28,15 @@
                 <div class="input-field">
                     <form id="checkInLocation">
                         <input id="searchTruckName" placeholder="FoodTruck Name" type="search" required>
-                        <label class="label-icon" for="search"></label>
-
                         <input id="emailName" placeholder="Email" type="search" required>
-
                         <div class="checkIncheckOut">
                             <ul>
-                                <a  class="checkInLocationButton" >Check-in</a>
+                                <a class="checkInLocationButton">Check-in</a>
                                 <br>
                                 <br>
-                                <a href="index.html" class="checkOutLocationButton" >Check-out</a>
+                                <a href="index.html" class="checkOutLocationButton">Check-out</a>
                             </ul>
                         </div>
-
-                        <!-- <i class="material-icons">close</i> -->
                     </form>
                 </div>
             </form>
@@ -64,24 +46,24 @@
 
     <script>
 
-let pos = {}
-            navigator.geolocation.getCurrentPosition(function(position) {
-               pos = {
+        let pos = {}
+        navigator.geolocation.getCurrentPosition(function (position) {
+            pos = {
                 inputLat: position.coords.latitude,
                 inputLong: position.coords.longitude
-              }
-            })
-              console.log(pos)
+            }
+        })
+        console.log(pos)
 
         function writeUserData(inputTruckName, inputEmail, inputPos) {
-           
-              //console.log(pos)
-          
-            let userID = $("#searchTruckName").val(); 
+
+            //console.log(pos)
+
+            let userID = $("#searchTruckName").val();
             firebase.database().ref('users/' + userID).set({
                 truckName: inputTruckName,
                 email: inputEmail,
-               location: inputPos
+                location: inputPos
             });
         }
 
@@ -92,12 +74,12 @@ let pos = {}
             event.preventDefault();
             console.log("hello");
             //let userInputid = $("#emailn")
-            writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
+            writeUserData($("#searchTruckName").val(), $("#emailName").val(), pos)
         });
 
     </script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0"
-     async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0" async
+        defer></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
@@ -123,13 +105,12 @@ let pos = {}
         firebase.analytics();
     </script>
 
-<footer>
-    <h4>Food Truck Tinder, Inc:</h4>
-    <h4></h4>
-    <h5>Max</h5>
-    <h5>Kathryn</h5>
-    <h5>Jesse</h5>
-</footer>
+    <footer>
+        <h5>Food Truck Tinder, Inc:</h5>
+        <h6>Max</h6>
+        <h6>Kathryn</h6>
+        <h6>Jesse</h6>
+    </footer>
 
 </body>
 
