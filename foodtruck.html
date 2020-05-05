@@ -14,9 +14,13 @@
 <body>
 
     <div class="jumbotron">
-        <div>
-            <h1>Show where your food truck is located</h1>
+        
+            <div id="jumbotronDiv">
+                
+            <h1 id="jumbotronHeading">Show where your food truck is located</h1>
+        
         </div>
+
     </div>
 
     <!-- <nav>
@@ -32,18 +36,24 @@
     <div class="container">
 
         <div class="nav-wrapper2">
-            <h1>Check in here</h1>
+            <h1 id="checkInWrapper">Check in here</h1>
             <form>
                 <div class="input-field">
                     <form id="checkInLocation">
                         <input id="searchTruckName" placeholder="FoodTruck Name" type="search" required>
                         <label class="label-icon" for="search"></label>
-                    
+
                         <input id="emailName" placeholder="Email" type="search" required>
-                        
-                        <button id="checkInButton">Check-in</button>
-                        <button id="checkOutButton">Check-out</button>
-                    
+
+                        <div class="checkIncheckOut">
+                            <ul>
+                                <a href="index.html" class="checkInLocationButton" >Check-in</a>
+                                <br>
+                                <br>
+                                <a href="index.html" class="checkOutLocationButton" >Check-out</a>
+                            </ul>
+                        </div>
+
                         <!-- <i class="material-icons">close</i> -->
                     </form>
                 </div>
@@ -64,15 +74,15 @@
             });
         }
 
-      let button = document.querySelector("checkInLocation");
+        let button = document.querySelector("checkInLocation");
 
-      $("#checkInButton").on("click", function() {
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    console.log("hello");
-    //let userInputid = $("#emailn")
-    writeUserData("name","email" )
-  });
+        $("#checkInButton").on("click", function () {
+            // Preventing the button from trying to submit the form
+            event.preventDefault();
+            console.log("hello");
+            //let userInputid = $("#emailn")
+            writeUserData("name", "email")
+        });
 
     </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -99,6 +109,15 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
+
+<footer>
+    <h4>Food Truck Tinder, Inc:</h4>
+    <h4></h4>
+    <h5>Max</h5>
+    <h5>Kathryn</h5>
+    <h5>Jesse</h5>
+</footer>
+
 </body>
 
 </html>
