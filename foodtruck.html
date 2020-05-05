@@ -34,7 +34,11 @@
                                 <a class="checkInLocationButton">Check-in</a>
                                 <br>
                                 <br>
+<<<<<<< HEAD
                                 <a href="index.html" class="checkOutLocationButton">Check-out</a>
+=======
+                                <a  class="checkOutLocationButton" >Check-out</a>
+>>>>>>> b1be9c7466a6b3cedcb8802a009a3b9894ad0293
                             </ul>
                         </div>
                     </form>
@@ -76,6 +80,21 @@
             //let userInputid = $("#emailn")
             writeUserData($("#searchTruckName").val(), $("#emailName").val(), pos)
         });
+
+        $(".checkOutLocationButton").on("click", function () {
+            // Preventing the button from trying to submit the form
+            event.preventDefault();
+            console.log("hello");
+            let userID = $("#searchTruckName").val(); 
+            firebase.database().ref('users/' + userID).remove()
+            //let userInputid = $("#emailn")
+           // writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
+        });
+
+
+
+
+
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0" async
