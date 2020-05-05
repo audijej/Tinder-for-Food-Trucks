@@ -158,7 +158,58 @@
       </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0&callback=initMap"
     async defer></script>
-    
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCPnQV0bMCM7T5Or9Z9j90rBE4u7a0QOGI",
+            authDomain: "tinder-for-food-trucks.firebaseapp.com",
+            databaseURL: "https://tinder-for-food-trucks.firebaseio.com",
+            projectId: "tinder-for-food-trucks",
+            storageBucket: "tinder-for-food-trucks.appspot.com",
+            messagingSenderId: "602255825688",
+            appId: "1:602255825688:web:02f921fa837b05930a5c6d",
+            measurementId: "G-00BM15M1DV"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+//         var locationsRef = firebase.database().ref("locations");
+//   var bounds = new google.maps.LatLngBounds();
+//   locationsRef.on('child_added', function(snapshot) {
+//     var data = snapshot.val();
+//     console.log(data);
+//     var marker = new google.maps.Marker({
+//       position: {
+//         lat: data.lat,
+//         lng: data.lng
+//       },
+//       map: map
+//     });
+//     bounds.extend(marker.getPosition());
+//     marker.addListener('click', (function(data) {
+//       return function(e) {
+//         infowindow.setContent(data.name + "<br>" + this.getPosition().toUrlValue(6) + "<br>" + data.message);
+//         infowindow.open(map, this);
+//       }
+//     }(data)));
+//     map.fitBounds(bounds);
+//   });
+// }
+    </script>
+
+
+
+
     <footer>
         <h4>Food Truck Tinder, Inc:</h4>
         <h4></h4>
