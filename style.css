@@ -1,11 +1,20 @@
-.nav-wrapper {
-    background-image: url(https://media.timeout.com/images/101835933/630/472/image.jpg);
+#jumbotronHome {
+    background-image: url(https://media.timeout.com/images/101835933/630/472/image.jpg);    background-attachment: fixed;
+    background-size: 100% 100%;
     background-attachment: fixed;
-    background-size: cover;
+    position: relative;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    padding: 200px;
+    padding: 100px;
 
+}
+
+.nav-wrapper {
+    padding: 20px;
+    background-color: #424242;
+    width: 100%;
+    margin-top: 0px;
+    
 }
 
 .jumbotron { 
@@ -13,6 +22,7 @@
   background-image: url(https://media2.fdncms.com/stranger/imager/u/large/40665661/screen_shot_2019-07-03_at_4.56.37_pm.png);
   background-attachment: fixed;
   position: relative;
+  background-size: 100% 100%;
   font-weight: bold;
 
 }
@@ -58,7 +68,6 @@
 }
 
 .body-container {
-margin-top: 20%;
 text-align: center;
 }
 

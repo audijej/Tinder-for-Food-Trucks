@@ -1,112 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Tinder for Food Trucks</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Tinder for Food Trucks</title>
 </head>
 
 
 <body>
-    
+  
     <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Food Truck Tinder</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="foodtruck.html">Food Truck Vendors</a></li>
-            <li><a href="badges.html">Food Truck Enthusiast</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="body-container">
-        <h1>FIND YOUR FAVORITE FOOD TRUCK</h1>
-        <h2>Bringing Food Trucks and Foodies together</h2>
-      
-        <br>
-        <p>Finding your favorite food truck can now be as simple as launching the Food Truck</p>
-        <p>Tinder app. All you simply have to do is search your favorite truck. You can</p>
-        <p>also use your current location to see what trucks are around your area.</p>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Food Truck Tinder</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="foodtruck.html">Food Truck Vendors</a></li>
+          <li><a href="badges.html">Food Truck Enthusiast</a></li>
+        </ul>
       </div>
-            
-      <div id="map"></div>
-      <script>
-        // Note: This example requires that you consent to location sharing when
-        // prompted by your browser. If you see the error "The Geolocation service
-        // failed.", it means you probably did not give permission for the browser to
-        // locate you.
-        var map, infoWindow;
-        function initMap() {
-            var uluru = {lat: 47.608, lng: -122.335};
-            var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 15, center: uluru});
-            // The marker, positioned at Uluru
+    </nav>
+  
+    <div id="jumbotronHome"></div>
 
-            var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
-            var marker = new google.maps.Marker({position: uluru, map: map, icon: iconBase});
-            map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 47.608, lng: -122.335},
-            zoom: 15
+  <div class="body-container">
+    <h1>FIND YOUR FAVORITE FOOD TRUCK</h1>
+    <h2>Bringing Food Trucks and Foodies together</h2>
 
-          });
-          infoWindow = new google.maps.InfoWindow;
-  
-          // Try HTML5 geolocation.
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-              var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
-  
-              infoWindow.setPosition(pos);
-              infoWindow.setContent();
-              infoWindow.open(map);
-              map.setCenter(pos);
-            }, function() {
-              handleLocationError(true, infoWindow, map.getCenter());
-            });
-          } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-          }
-        }
-  
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    <br>
+    <p>Finding your favorite food truck can now be as simple as launching the Food Truck</p>
+    <p>Tinder app. All you simply have to do is search your favorite truck. You can</p>
+    <p>also use your current location to see what trucks are around your area.</p>
+  </div>
+
+  <div id="map"></div>
+  <script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+    var map, infoWindow;
+    function initMap() {
+      var uluru = { lat: 47.608, lng: -122.335 };
+      var map = new google.maps.Map(
+        document.getElementById('map'), { zoom: 15, center: uluru });
+      // The marker, positioned at Uluru
+
+      var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+      var marker = new google.maps.Marker({ position: uluru, map: map, icon: iconBase });
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 47.608, lng: -122.335 },
+        zoom: 15
+
+      });
+      infoWindow = new google.maps.InfoWindow;
+
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
           infoWindow.setPosition(pos);
-          infoWindow.setContent(browserHasGeolocation ?
-                                'Error: The Geolocation service failed.' :
-                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.setContent();
           infoWindow.open(map);
-        }
-
-        marker.addListener('click', function() {
-          console.log("I'm a Google click");
-          getYelpReview();
+          map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, infoWindow, map.getCenter());
         });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+    }
 
-        function getYelpReview() {
-          let yelpURL = "https://api.yelp.com/v3/businesses/search"
-          $.ajax({
-            url: yelpURL,
-            method: GET
-          }).then(function(responseYelp){
-            console.log(responseYelp);
-          })
-        }
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
 
-      </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0&callback=initMap"
+    marker.addListener('click', function () {
+      console.log("I'm a Google click");
+      getYelpReview();
+    });
+
+    function getYelpReview() {
+      let yelpURL = "https://api.yelp.com/v3/businesses/search"
+      $.ajax({
+        url: yelpURL,
+        method: GET
+      }).then(function (responseYelp) {
+        console.log(responseYelp);
+      })
+    }
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0&callback=initMap"
     async defer></script>
-    
-    <footer>
-        <h4>Food Truck Tinder, Inc:</h4>
-        <h4></h4>
-        <h5>Max</h5>
-        <h5>Kathryn</h5>
-        <h5>Jesse</h5>
-    </footer>
+
+  <footer>
+    <h4>Food Truck Tinder, Inc:</h4>
+    <h4></h4>
+    <h5>Max</h5>
+    <h5>Kathryn</h5>
+    <h5>Jesse</h5>
+  </footer>
 </body>
+
 </html>
