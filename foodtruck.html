@@ -47,7 +47,7 @@
 
                         <div class="checkIncheckOut">
                             <ul>
-                                <a href="index.html" class="checkInLocationButton" >Check-in</a>
+                                <a  class="checkInLocationButton" >Check-in</a>
                                 <br>
                                 <br>
                                 <a href="index.html" class="checkOutLocationButton" >Check-out</a>
@@ -64,27 +64,40 @@
 
     <script>
 
-        function writeUserData(inputTruckName, inputEmail) {
-            let userID = "123"
+let pos = {}
+            navigator.geolocation.getCurrentPosition(function(position) {
+               pos = {
+                inputLat: position.coords.latitude,
+                inputLong: position.coords.longitude
+              }
+            })
+              console.log(pos)
+
+        function writeUserData(inputTruckName, inputEmail, inputPos) {
+           
+              //console.log(pos)
+          
+            let userID = $("#searchTruckName").val(); 
             firebase.database().ref('users/' + userID).set({
                 truckName: inputTruckName,
-                email: inputEmail
-                //lat: position.coords.latitude,
-                //long: position.coords.longitude
+                email: inputEmail,
+               location: inputPos
             });
         }
 
         let button = document.querySelector("checkInLocation");
 
-        $("#checkInButton").on("click", function () {
+        $(".checkInLocationButton").on("click", function () {
             // Preventing the button from trying to submit the form
             event.preventDefault();
             console.log("hello");
             //let userInputid = $("#emailn")
-            writeUserData("name", "email")
+            writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
         });
 
     </script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0"
+     async defer></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
