@@ -10,22 +10,15 @@
 }
 
 .nav-wrapper {
-<<<<<<< HEAD
-    padding: 20px;
-=======
     padding: 5px;
->>>>>>> master
     background-color: #424242;
     width: 100%;
     margin-top: 0px;
     
-<<<<<<< HEAD
-=======
 }
 
 .nav-wrapper2 {
     border: solid black 3px;
->>>>>>> master
 }
 
 .jumbotron { 
