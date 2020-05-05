@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,8 +10,8 @@
   <title>Tinder for Food Trucks</title>
 </head>
 
-
 <body>
+<<<<<<< HEAD
   
     <nav>
       <div class="nav-wrapper">
@@ -23,12 +24,27 @@
     </nav>
   
     <div id="jumbotronHome"></div>
+=======
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Food Truck Tinder</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="foodtruck.html">Food Truck Vendors</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="jumbotronHome"></div>
+
+>>>>>>> master
 
   <div class="body-container">
     <h1>FIND YOUR FAVORITE FOOD TRUCK</h1>
     <h2>Bringing Food Trucks and Foodies together</h2>
 
     <br>
+<<<<<<< HEAD
     <p>Finding your favorite food truck can now be as simple as launching the Food Truck</p>
     <p>Tinder app. All you simply have to do is search your favorite truck. You can</p>
     <p>also use your current location to see what trucks are around your area.</p>
@@ -36,12 +52,28 @@
 
   <div id="map"></div>
   <script>
+=======
+    <h5>Finding your favorite food truck can now be as simple as launching the Food Truck
+      Tinder app. All you simply have to do is search your favorite truck. You can
+      also use your current location to see what trucks are around your area.</h5>
+
+  </div>
+
+  <div id="map"></div>
+
+
+  <script>
+
+
+    //testing 
+>>>>>>> master
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
     var map, infoWindow;
     function initMap() {
+<<<<<<< HEAD
       var uluru = { lat: 47.608, lng: -122.335 };
       var map = new google.maps.Map(
         document.getElementById('map'), { zoom: 15, center: uluru });
@@ -56,18 +88,61 @@
       });
       infoWindow = new google.maps.InfoWindow;
 
+=======
+      //   var uluru = {lat: 47.608, lng: -122.335};
+      //   var map = new google.maps.Map(
+      //   document.getElementById('map'), {zoom: 15, center: uluru});
+      //   // The marker, positioned at Uluru
+
+      //   var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+      //   var marker = new google.maps.Marker({position: uluru, map: map, icon: iconBase});
+      //   map = new google.maps.Map(document.getElementById('map'), {
+      //   center: {lat: 47.608, lng: -122.335},
+      //   zoom: 15
+
+      // });
+      infoWindow = new google.maps.InfoWindow;
+
+
+>>>>>>> master
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
           var pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
+<<<<<<< HEAD
           };
 
           infoWindow.setPosition(pos);
           infoWindow.setContent();
           infoWindow.open(map);
           map.setCenter(pos);
+=======
+
+          };
+
+          console.log(pos)
+          //console.log(lng)
+
+          var image = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+          var iconBase = 'http://maps.google.com/mapfiles/kml/paddle';
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: pos
+          });
+
+          var point = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: image
+            // title: 'Cheers'
+          });
+
+          infoWindow.open(map);
+          point.setMap(map);
+>>>>>>> master
         }, function () {
           handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -77,6 +152,7 @@
       }
     }
 
+<<<<<<< HEAD
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ?
@@ -100,16 +176,80 @@
       })
     }
 
+=======
+    // Event listener to get data from Tripadvisor when user clicks on map icon (marker);
+    google.maps.event.addListener(map, 'click', function (event) {
+      placeMarker(map, event.latLng);
+    });
+
+    function placeMarker(map, location) {
+      let marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+        content: 'Latitude: ' + location.lat() +
+          '<br>Longitude: ' + location.lng()
+      });
+      infowindow.open(map, marker);
+    }
+
+    //Variables to pull latitude and longitude;
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    // Variable with Tripadvisor information for the ajax call;
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=2&lunit=km&lang=en_US&latitude=" + lat + "&longitude=" + lon,
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+        "x-rapidapi-key": "xxx"
+      }
+    }
+    // Ajax call to get response from Tripadvisor, including specific elements to relay on screen;
+    $.ajax(settings).done(function (responseTripAdv) {
+      console.log(responseTripAdv);
+      console.log(window);
+      let foodTruckName = responseTripAdv.data[0].name;
+      let foodTruckRating = responseTripAdv.data[0].rating;
+      let foodTruckWebsite = responseTripAdv.data[0].website;
+      // $("#results").append("<h5>").text(foodTruckName);
+    });
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+    //custom marker for food trucks: http://maps.google.com/mapfiles/kml/shapes/truck.png
+
+    let myGoogleMapsAPI = "xxx";
+    let myTripadvisorAPI = "xxx";
+>>>>>>> master
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0&callback=initMap"
     async defer></script>
 
   <footer>
+<<<<<<< HEAD
     <h4>Food Truck Tinder, Inc:</h4>
     <h4></h4>
     <h5>Max</h5>
     <h5>Kathryn</h5>
     <h5>Jesse</h5>
+=======
+    <h5>Food Truck Tinder, Inc:</h5>
+    <h6>Max</h6>
+    <h6>Kathryn</h6>
+    <h6>Jesse</h6>
+>>>>>>> master
   </footer>
 </body>
 
