@@ -70,22 +70,40 @@
             });
         }
 
+        
+        function clearform(){
+
+                $("#searchTruckName").value = '';
+                $("#emailName").value = '';
+
+                }
+
+
         let button = document.querySelector("checkInLocation");
 
         $(".checkInLocationButton").on("click", function () {
             // Preventing the button from trying to submit the form
-            event.preventDefault();
+            //event.preventDefault();
             console.log("hello");
             //let userInputid = $("#emailn")
-            writeUserData($("#searchTruckName").val(), $("#emailName").val(), pos)
+
+            writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
+            alert("You have been checked in ");
+            $("#checkInLocation")[0].reset();
+            //$("#searchTruckName").reset();
+
+
         });
 
         $(".checkOutLocationButton").on("click", function () {
             // Preventing the button from trying to submit the form
-            event.preventDefault();
+            //event.preventDefault();
             console.log("hello");
             let userID = $("#searchTruckName").val(); 
             firebase.database().ref('users/' + userID).remove()
+            alert("You have been checked out ");
+            $("#checkInLocation")[0].reset();
+            //clearform();
             //let userInputid = $("#emailn")
            // writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
         });
