@@ -1,13 +1,16 @@
 #jumbotronHome {
-    background-image: url(https://media.timeout.com/images/101835933/630/472/image.jpg);    background-attachment: fixed;
+    background-image: url(foodTruckBanner.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
     position: relative;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    padding: 100px;
+    padding-top: 50px;
+    padding-bottom: 400px;
+    margin-top: -50px;
 
 }
+
 
 .nav-wrapper {
     padding: 5px;
@@ -19,6 +22,9 @@
 
 .nav-wrapper2 {
     border: solid black 3px;
+    text-shadow: 0px 2px 3px black;
+    text-align: center;
+
 }
 
 .jumbotron { 
@@ -35,7 +41,7 @@
 .jumbotron #jumbotronDiv {
     background:lightgrey;
     border: solid black 1px;
-    opacity: 70%;
+    opacity: 80%;
   }
 
 .jumbotron #jumbotronDiv h1 { 
@@ -62,13 +68,14 @@
 
 }
 
-.container {
+#containment {
     background-color: grey;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     
 }
+
 
 .body-container {
 text-align: center;
@@ -95,6 +102,9 @@ li:hover {
     color: black;
     padding: 20px;
     margin: auto;
+    margin-left: -20px;
+    width: 100%;
+    border-bottom: solid white 1px;
     
 }
 
@@ -109,6 +119,12 @@ li:hover {
 input::placeholder {
     color: gray;
     
+}
+
+#checkInWrapper {
+    /* background:lightgrey; */
+    /* border: solid black 1px; */
+    opacity: 90%;
 }
 
 .checkIncheckOut {
@@ -145,6 +161,7 @@ footer {
     text-align: center;
 
 }
+
 
   /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
