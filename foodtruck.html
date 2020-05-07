@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<!-- 
+    <!-- 
     testing code -->
 
     <div class="jumbotron">
@@ -25,22 +25,35 @@
     <div class="container" id="containment">
 
         <div class="nav-wrapper2">
-            
+
             <h1 id="checkInWrapper">Check in here</h1>
             <form>
                 <div class="input-field">
                     <form id="checkInLocation">
                         <div class="container">
-                        <input id="searchTruckName" placeholder="FoodTruck Name" type="search" required>
-                        <input id="emailName" placeholder="Email" type="search" required>
-                    </div>
+                            <input id="searchTruckName" placeholder="FoodTruck Name" type="search" required>
+                            <input id="emailName" placeholder="Email" type="search" required>
+                        </div>
                         <div class="checkIncheckOut">
                             <ul>
                                 <a class="checkInLocationButton">Check-in</a>
                                 <br>
                                 <br>
                                 <a href="index.html" class="checkOutLocationButton">Check-out</a>
-                                <a  class="checkOutLocationButton" >Check-out</a>
+                                <a class="checkOutLocationButton">Check-out</a>
+
+                                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
                             </ul>
                         </div>
                     </form>
@@ -51,6 +64,13 @@
     </div>
 
     <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+    console.log("hello");
+  });
+
 
         let pos = {}
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -73,13 +93,13 @@
             });
         }
 
-        
-        function clearform(){
 
-                $("#searchTruckName").value = '';
-                $("#emailName").value = '';
+        function clearform() {
 
-                }
+            $("#searchTruckName").value = '';
+            $("#emailName").value = '';
+
+        }
 
 
         let button = document.querySelector("checkInLocation");
@@ -90,7 +110,7 @@
             console.log("hello");
             //let userInputid = $("#emailn")
 
-            writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
+            writeUserData($("#searchTruckName").val(), $("#emailName").val(), pos)
             alert("You have been checked in ");
             $("#checkInLocation")[0].reset();
             //$("#searchTruckName").reset();
@@ -102,13 +122,13 @@
             // Preventing the button from trying to submit the form
             //event.preventDefault();
             console.log("hello");
-            let userID = $("#searchTruckName").val(); 
+            let userID = $("#searchTruckName").val();
             firebase.database().ref('users/' + userID).remove()
             alert("You have been checked out ");
             $("#checkInLocation")[0].reset();
             //clearform();
             //let userInputid = $("#emailn")
-           // writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
+            // writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
         });
 
 
@@ -145,7 +165,9 @@
     </script>
 
     <footer>
-        <a href="index.html"><h5>Food Truck Tinder, Inc:</h5></a>
+        <a href="index.html">
+            <h5>Food Truck Tinder, Inc:</h5>
+        </a>
         <h6>Max</h6>
         <h6>Kathryn</h6>
         <h6>Jesse</h6>
