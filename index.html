@@ -12,17 +12,21 @@
 
 <body>
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Food Truck Tinder</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="foodtruck.html">Food Truck Vendors</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Food Truck Tinder</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="foodtruck.html">Food Truck Vendors</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
   <div id="jumbotronHome"></div>
+  
 
+  <div class="container" id="indexContainer">
 
   <div class="body-container">
     <h1>FIND YOUR FAVORITE FOOD TRUCK</h1>
@@ -34,6 +38,8 @@
       also use your current location to see what trucks are around your area.</h5>
 
   </div>
+</div>
+
 
   <div id="map"></div>
 
@@ -135,7 +141,7 @@
         'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
     }
-
+S
     //custom marker for food trucks: http://maps.google.com/mapfiles/kml/shapes/truck.png
 
     let myGoogleMapsAPI = "xxx";
@@ -169,28 +175,28 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
 
-  //       var locationsRef = firebase.database().ref("pos");
-  // var bounds = new google.maps.LatLngBounds();
-  // locationsRef.on('child_added', function(snapshot) {
-  //   var data = snapshot.val();
-  //   console.log(data);
-  //   var marker = new google.maps.Marker({
-  //     position: {
-  //       lat: data.lat,
-  //       lng: data.lng
-  //     },
-  //     map: map
-  //   });
-  //   bounds.extend(marker.getPosition());
-  //   marker.addListener('click', (function(data) {
-  //     return function(e) {
-  //       infowindow.setContent(data.name + "<br>" + this.getPosition().toUrlValue(6) + "<br>" + data.message);
-  //       infowindow.open(map, this);
-  //     }
-  //   }(data)));
-  //   map.fitBounds(bounds);
-  // });
-
+//         var locationsRef = firebase.database().ref("locations");
+//   var bounds = new google.maps.LatLngBounds();
+//   locationsRef.on('child_added', function(snapshot) {
+//     var data = snapshot.val();
+//     console.log(data);
+//     var marker = new google.maps.Marker({
+//       position: {
+//         lat: data.lat,
+//         lng: data.lng
+//       },
+//       map: map
+//     });
+//     bounds.extend(marker.getPosition());
+//     marker.addListener('click', (function(data) {
+//       return function(e) {
+//         infowindow.setContent(data.name + "<br>" + this.getPosition().toUrlValue(6) + "<br>" + data.message);
+//         infowindow.open(map, this);
+//       }
+//     }(data)));
+//     map.fitBounds(bounds);
+//   });
+// }
   </script>
 
 
