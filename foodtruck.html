@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 
     <title>Tinder for Food Trucks</title>
 </head>
@@ -40,20 +42,38 @@
                                 <br>
                                 <br>
                                 <a href="index.html" class="checkOutLocationButton">Check-out</a>
-                                <a class="checkOutLocationButton">Check-out</a>
-
-                                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+                                <a  class="checkOutLocationButton" >Check-out</a>
+                                <br>
+                                <br>
+     <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Check-In</a>
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>Check-In Here</h4>
+      <p>See the map for food trucks near you</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" id="modalButton" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
+  <br>
+  <br>
+   <!-- Modal Trigger -->
+   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Check-Out</a>
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+       <h4>Check-Out</h4>
+       <p>Thank you for using Food Truck Tinder</p>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+     </div>
+   </div>
+
                             </ul>
                         </div>
                     </form>
@@ -65,12 +85,9 @@
 
     <script>
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
-    console.log("hello");
+$(document).ready(function(){
+    $('.modal').modal();
   });
-
 
         let pos = {}
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -137,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0" async
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CWXAshpMiRrRXsGlLbIon7S5ZHAmjG4" async
         defer></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <title>Tinder for Food Trucks</title>
 </head>
 
@@ -43,129 +44,13 @@
 
   <div id="map"></div>
 
-
-  <script>
-
-
-    //testing 
-    // Note: This example requires that you consent to location sharing when
-    // prompted by your browser. If you see the error "The Geolocation service
-    // failed.", it means you probably did not give permission for the browser to
-    // locate you.
-    var map, infoWindow;
-    function initMap() {
-      //   var uluru = {lat: 47.608, lng: -122.335};
-      //   var map = new google.maps.Map(
-      //   document.getElementById('map'), {zoom: 15, center: uluru});
-      //   // The marker, positioned at Uluru
-
-      //   var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
-      //   var marker = new google.maps.Marker({position: uluru, map: map, icon: iconBase});
-      //   map = new google.maps.Map(document.getElementById('map'), {
-      //   center: {lat: 47.608, lng: -122.335},
-      //   zoom: 15
-
-      // });
-      infoWindow = new google.maps.InfoWindow;
-
-
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-
-          };
-
-          console.log(pos)
-          //console.log(lng)
-
-          var image = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
-          var iconBase = 'http://maps.google.com/mapfiles/kml/paddle';
-
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 17,
-            center: pos
-          });
-
-          var point = new google.maps.Marker({
-            position: pos,
-            map: map,
-            icon: image
-            // title: 'Cheers'
-          });
-
-          infoWindow.open(map);
-          point.setMap(map);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-    }
-
-    // Event listener to get data from Tripadvisor when user clicks on map icon (marker);
-    google.maps.event.addListener(map, 'click', function (event) {
-      placeMarker(map, event.latLng);
-    });
-
-    function placeMarker(map, location) {
-      let marker = new google.maps.Marker({
-        position: location,
-        map: map
-      });
-
-      var infowindow = new google.maps.InfoWindow({
-        content: 'Latitude: ' + location.lat() +
-          '<br>Longitude: ' + location.lng()
-      });
-      infowindow.open(map, marker);
-    }
-
-    //Variables to pull latitude and longitude;
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-
-    // Variable with Tripadvisor information for the ajax call;
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=2&lunit=km&lang=en_US&latitude=" + lat + "&longitude=" + lon,
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": "xxx"
-      }
-    }
-    // Ajax call to get response from Tripadvisor, including specific elements to relay on screen;
-    $.ajax(settings).done(function (responseTripAdv) {
-      console.log(responseTripAdv);
-      console.log(window);
-      let foodTruckName = responseTripAdv.data[0].name;
-      let foodTruckRating = responseTripAdv.data[0].rating;
-      let foodTruckWebsite = responseTripAdv.data[0].website;
-      // $("#results").append("<h5>").text(foodTruckName);
-    });
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-
-    //custom marker for food trucks: http://maps.google.com/mapfiles/kml/shapes/truck.png
-
-    let myGoogleMapsAPI = "xxx";
-    let myTripadvisorAPI = "xxx";
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZLHBUysvwJc9ZpxBa-rudfSdhRmebb0&callback=initMap"
-    async defer></script>
-
+  <footer>
+    <h4>Food Truck Tinder, Inc:</h4>
+    <h4></h4>
+    <h5>Max</h5>
+    <h5>Kathryn</h5>
+    <h5>Jesse</h5>
+  </footer>
 
 
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -174,8 +59,15 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CWXAshpMiRrRXsGlLbIon7S5ZHAmjG4&callback=initMap"
+    async defer></script>
 
   <script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyCPnQV0bMCM7T5Or9Z9j90rBE4u7a0QOGI",
@@ -191,40 +83,148 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
 
-//         var locationsRef = firebase.database().ref("locations");
-//   var bounds = new google.maps.LatLngBounds();
-//   locationsRef.on('child_added', function(snapshot) {
-//     var data = snapshot.val();
-//     console.log(data);
-//     var marker = new google.maps.Marker({
-//       position: {
-//         lat: data.lat,
-//         lng: data.lng
-//       },
-//       map: map
-//     });
-//     bounds.extend(marker.getPosition());
-//     marker.addListener('click', (function(data) {
-//       return function(e) {
-//         infowindow.setContent(data.name + "<br>" + this.getPosition().toUrlValue(6) + "<br>" + data.message);
-//         infowindow.open(map, this);
-//       }
-//     }(data)));
-//     map.fitBounds(bounds);
-//   });
-// }
+
+
+    var map, infoWindow;
+    function initMap() {
+      infoWindow = new google.maps.InfoWindow;
+      console.log("Init ran");
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          // console.log(pos)
+
+          var image = 'https://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+          var iconBase = 'http://maps.google.com/mapfiles/kml/paddle';
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: pos
+          });
+
+          var point = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: image
+          });
+
+          var image = 'http://maps.google.com/mapfiles/kml/shapes/truck.png'
+          var locationsRef = firebase.database().ref("users");
+          locationsRef.on('child_added', function (snapshot) {
+            console.log(snapshot.val());
+            var data = snapshot.val();
+            var marker = new google.maps.Marker({
+              position: {
+                lat: data.location.inputLat,
+                lng: data.location.inputLong
+              },
+              map: map,
+              icon: image,
+            });
+            marker.setMap(map);
+
+            // marker.addListener('click', (function (data) {
+            //   return function (e) {
+            //     infowindow.setContent(data.name + "<br>" + this.getPosition().toUrlValue(6) + "<br>" + data.message);
+            //     infowindow.open(map, this);
+            //   }
+            // }(data)));
+
+            // marker.setMap(map);
+          });
+
+
+          // Event listener to get data from Tripadvisor when user clicks on map icon (marker);
+          point.addListener('click', function () {
+            infoWindow.open(map, point);
+            getTripadvisor();
+          });
+
+          infoWindow.open(map);
+          point.setMap(map);
+        }, function () {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+    }
+
+    function getTripadvisor() {
+
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        //Variables to pull latitude and longitude;
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        console.log(lat);
+        console.log(lng);
+
+        // Variable with Tripadvisor information for the ajax call;
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=2&lunit=km&lang=en_US&latitude=" + lat + "&longitude=" + lng,
+          "method": "GET",
+          "headers": {
+            "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+            "x-rapidapi-key": "bad8a211d2msh57108b2943e9854p1e0430jsnba4b0a4af80a"
+          }
+        }
+        // Ajax call to get response from Tripadvisor, including specific elements to relay on screen;
+        $.ajax(settings).done(function (responseTripAdv) {
+          console.log(responseTripAdv);
+          console.log(window);
+          let foodTruckName = responseTripAdv.data[0].name;
+          let foodTruckRating = responseTripAdv.data[0].rating;
+          let foodTruckFood = responseTripAdv.data[0].cuisine[0].name;
+          infoWindow.setContent(foodTruckName + '<br> Rating: ' + foodTruckRating + '<br> Cuisine: ' + foodTruckFood);
+          console.log(foodTruckRating);
+        });
+      });
+    }
+
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+    //custom marker for food trucks: http://maps.google.com/mapfiles/kml/shapes/truck.png
+
+    let myGoogleMapsAPI = "xxx";
+    let myTripadvisorAPI = "xxx";
+
+
+
+
+    // bounds.extend(marker.getPosition());
+    // marker.addListener('click', (function (data) {
+    //   return function (e) {
+    //     infowindow.setContent(data.name + "<br>" + this.getPosition().toUrlValue(6) + "<br>" + data.message);
+    //     infowindow.open(map, this);
+    //   }
+    // }(data)));
+    // map.fitBounds(bounds);
+
   </script>
 
 
 
 
-  <footer>
-    <h4>Food Truck Tinder, Inc:</h4>
-    <h4></h4>
-    <h5>Max</h5>
-    <h5>Kathryn</h5>
-    <h5>Jesse</h5>
-  </footer>
 
 </body>
 
