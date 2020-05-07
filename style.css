@@ -1,15 +1,28 @@
 #jumbotronHome {
     background-image: url(foodTruckBanner.jpg);
-    background-size: 100% 100%;
+    background-size: contain;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     position: relative;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     padding-top: 50px;
     padding-bottom: 400px;
-    margin-top: -50px;
 
 }
+
+@media only screen and (min-width: 600px) {
+    #jumbotronHome {
+      background-image: url('foodTruckBanner.jpg');
+      background-size: contain;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        position: cover;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+
+    }
+  }
 
 
 .nav-wrapper {
@@ -177,4 +190,10 @@ html, body {
     height: 75%;
     margin: 0;
     padding: 0;
-          }
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+    #primary { width:100%; }
+    #secondary { width:100%; margin:0; border:none; }
+}

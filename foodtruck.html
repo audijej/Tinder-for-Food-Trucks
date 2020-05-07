@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -36,22 +37,22 @@
                             <input id="searchTruckName" placeholder="FoodTruck Name" type="search" required>
                             <input id="emailName" placeholder="Email" type="search" required>
                         </div>
-                        <div class="checkIncheckOut">
+                        <!-- <div class="checkIncheckOut"> -->
                             <ul>
-                                <a class="checkInLocationButton">Check-in</a>
+                                <!-- <a class="checkInLocationButton">Check-in</a> -->
                                 <br>
                                 <br>
-                                <a href="index.html" class="checkOutLocationButton">Check-out</a>
-                                <a  class="checkOutLocationButton" >Check-out</a>
+                                <!-- <a href="index.html" class="checkOutLocationButton">Check-out</a>
+                                <a  class="checkOutLocationButton" >Check-out</a> -->
                                 <br>
                                 <br>
      <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Check-In</a>
-
+  <!-- <a class="waves-effect waves-light checkInLocationButton modal-trigger" href="#modal1">Check-In</a> -->
+  <button data-target="modal1" class="checkInLocationButton modal-trigger">Check-In</button>
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Check-In Here</h4>
+      <h4>You have been Checked-In </h4>
       <p>See the map for food trucks near you</p>
     </div>
     <div class="modal-footer">
@@ -61,10 +62,10 @@
   <br>
   <br>
    <!-- Modal Trigger -->
-   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Check-Out</a>
-
+   <a class="waves-effect waves-light checkOutLocationButton modal-trigger" href="#modal2">Check-Out</a>
+   <!-- <button data-target="modal1" class="checkOutLocationButton modal-trigger">Check-Out</button> -->
    <!-- Modal Structure -->
-   <div id="modal1" class="modal">
+   <div id="modal2" class="modal">
      <div class="modal-content">
        <h4>Check-Out</h4>
        <p>Thank you for using Food Truck Tinder</p>
@@ -128,7 +129,7 @@ $(document).ready(function(){
             //let userInputid = $("#emailn")
 
             writeUserData($("#searchTruckName").val(), $("#emailName").val(), pos)
-            alert("You have been checked in ");
+            // alert("You have been checked in ");
             $("#checkInLocation")[0].reset();
             //$("#searchTruckName").reset();
 
@@ -141,7 +142,7 @@ $(document).ready(function(){
             console.log("hello");
             let userID = $("#searchTruckName").val();
             firebase.database().ref('users/' + userID).remove()
-            alert("You have been checked out ");
+            // alert("You have been checked out ");
             $("#checkInLocation")[0].reset();
             //clearform();
             //let userInputid = $("#emailn")
