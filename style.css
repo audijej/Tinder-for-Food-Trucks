@@ -1,28 +1,17 @@
+
+
 #jumbotronHome {
     background-image: url(foodTruckBanner.jpg);
-    background-size: contain;
-    background-attachment: fixed;
+    height: 100%; /* It doesn't have to be '%'. It can also use 'px'. */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background-position: top center;
     background-repeat: no-repeat;
-    position: relative;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    padding-top: 50px;
-    padding-bottom: 400px;
+    background-size: 100%;
 
 }
 
-@media only screen and (min-width: 600px) {
-    #jumbotronHome {
-      background-image: url('foodTruckBanner.jpg');
-      background-size: contain;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        position: cover;
-        font-family: 'Times New Roman', Times, serif;
-        font-weight: bold;
-
-    }
-  }
 
 
 .nav-wrapper {
@@ -116,8 +105,9 @@ li:hover {
     padding: 20px;
     margin: auto;
     margin-left: -20px;
+    margin-right: 20px;
     width: 100%;
-    border-bottom: solid white 1px;
+    border-bottom: solid gray 1px;
     
 }
 
@@ -193,7 +183,47 @@ html, body {
 }
 
 /* Media Queries: Tabled Portrait */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 479px) {
     #primary { width:100%; }
     #secondary { width:100%; margin:0; border:none; }
 }
+
+@media (max-width: 600px) {
+
+    /* body {
+        margin: auto;
+    } */
+
+    #jumbotronHome {
+      background-image: url('foodTruckBanner.jpg');
+      /* background-size: contain;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        position: cover;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        margin-top: 0px;
+        margin-bottom: -200px; */
+
+    }
+    .nav-wrapper {
+        background-color: #424242;
+        width: 100%;
+        margin-top: 0px;
+        text-align: center;
+        
+    }
+
+    .nav-wrapper .brand-logo {
+        text-align: center;
+        font-size: 23px;
+    }
+
+    html {
+        height: 25%;
+    }
+
+    #map {
+        height: 500px;
+    }
+  }
