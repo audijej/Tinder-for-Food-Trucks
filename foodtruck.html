@@ -124,7 +124,7 @@
 
             writeUserData($("#searchTruckName").val(), $("#emailName").val(), pos)
             // alert("You have been checked in ");
-            $("#checkInLocation")[0].reset();
+            // $("#checkInLocation")[0].reset();
             //$("#searchTruckName").reset();
 
 
@@ -137,7 +137,7 @@
             let userID = $("#searchTruckName").val();
             firebase.database().ref('users/' + userID).remove()
             // alert("You have been checked out ");
-            $("#checkInLocation")[0].reset();
+            // $("#checkInLocation")[0].reset();
             //clearform();
             //let userInputid = $("#emailn")
             // writeUserData($("#searchTruckName").val(), $("#emailName").val(),pos)
