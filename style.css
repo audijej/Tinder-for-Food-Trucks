@@ -188,7 +188,7 @@ html, body {
     #secondary { width:100%; margin:0; border:none; }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1024px) {
 
 
     #jumbotronHome {
@@ -206,7 +206,7 @@ html, body {
 
     .nav-wrapper .brand-logo {
         text-align: center;
-        font-size: 23px;
+        font-size: 19px;
     }
 
     .jumbotron #jumbotronDiv h1 {
