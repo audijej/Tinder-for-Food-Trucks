@@ -152,8 +152,8 @@ $(document).ready(function(){
                   console.log(window);
                   let foodTruckName = responseTripAdv.data[0].name;
                   let foodTruckRating = responseTripAdv.data[0].rating;
-                  let foodTruckFood = responseTripAdv.data[0].cuisine[0].name;
-                  infoWindow.setContent(foodTruckName + '<br> Rating: ' + foodTruckRating + '<br> Cuisine: ' + foodTruckFood);
+                  let foodTruckAddress = responseTripAdv.data[0].address;
+                  infoWindow.setContent(foodTruckName + '<br> Rating: ' + foodTruckRating + '<br> Address: ' + foodTruckAddress);
                   console.log(foodTruckRating);
                 });
                 infoWindow.open(map, this);
